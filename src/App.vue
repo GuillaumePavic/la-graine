@@ -8,7 +8,7 @@
 
 <script>
 import Header from "@/components/Header.vue";
-import Footer from "@/components/Footer.vue"
+import Footer from "@/components/Footer.vue";
 
 export default {
   name: "App",
@@ -21,6 +21,6 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Baloo Chettan 2', cursive;
 }
 </style>

@@ -1,5 +1,18 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <div class="content">
+      <p>Front</p>
+      <p>Back</p>
+      <p>Github</p>
+      <p>LinkedIn</p>
+    </div>
   </div>
 </template>
+
+<style scoped>
+.content {
+  width: 1100px;
+  margin: auto;
+  margin-top: 70px;
+}
+</style>
