@@ -4,7 +4,7 @@
       <h2>{{ article.title }}</h2>
       <p>Le {{ article.date }}</p>
       <p>{{ article.message }}</p>
-      <a>Lire la suite</a>
+      <router-link :to="{ name: 'Article', params: {article: article.title.split(' ').join('-')} }" class="article-link">Lire la suite</router-link>
     </article>
   </div>
 </template>
@@ -16,43 +16,43 @@ export default {
     return {
       articles: [
         {
-          title: "Que semer en août ?",
+          title: "que semer en août",
           date: "27/07/2021",
           message:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, magnam enim voluptate debitis ducimus, inventore molestias soluta doloribus deleniti harum quasi architecto dicta sit tempora dolor nemo quisquam? Velit, rem?",
         },
         {
-          title: "Tailler les tomates",
+          title: "tailler les tomates",
           date: "02/08/2021",
           message:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, magnam enim voluptate debitis ducimus, inventore molestias soluta doloribus deleniti harum quasi architecto dicta sit tempora dolor nemo quisquam? Velit, rem?",
         },
         {
-          title: "Faire son compost",
+          title: "faire son compost",
           date: "28/06/2021",
           message:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, magnam enim voluptate debitis ducimus, inventore molestias soluta doloribus deleniti harum quasi architecto dicta sit tempora dolor nemo quisquam? Velit, rem?",
         },
         {
-          title: "Pêches, brugnons et nectarines",
+          title: "pêches, brugnons et nectarines",
           date: "24/04/2021",
           message:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, magnam enim voluptate debitis ducimus, inventore molestias soluta doloribus deleniti harum quasi architecto dicta sit tempora dolor nemo quisquam? Velit, rem?",
         },
         {
-          title: "Que semer en juillet ?",
+          title: "que semer en juillet ?",
           date: "14/06/2021",
           message:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, magnam enim voluptate debitis ducimus, inventore molestias soluta doloribus deleniti harum quasi architecto dicta sit tempora dolor nemo quisquam? Velit, rem?",
         },
         {
-          title: "Arrosage",
+          title: "arrosage",
           date: "05/05/2021",
           message:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, magnam enim voluptate debitis ducimus, inventore molestias soluta doloribus deleniti harum quasi architecto dicta sit tempora dolor nemo quisquam? Velit, rem?",
         },
         {
-          title: "Radis&co",
+          title: "radis&co",
           date: "02/07/2021",
           message:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, magnam enim voluptate debitis ducimus, inventore molestias soluta doloribus deleniti harum quasi architecto dicta sit tempora dolor nemo quisquam? Velit, rem?",
@@ -97,7 +97,7 @@ p {
   margin-bottom: 24px;
 }
 
-a {
+.article-link {
   position: absolute;
   bottom: 16px;
   font-size: 1.1rem;
@@ -107,7 +107,7 @@ a {
   transition: color 0.2s ease;
 }
 
-article:hover a {
+article:hover .article-link {
   color: #65ad64;
   font-size: 1.2rem;
   border-bottom: 1px solid #65ad64;
