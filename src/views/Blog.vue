@@ -64,13 +64,6 @@ export default {
 </script>
 
 <style scoped>
-.content {
-  width: 1100px;
-  margin: auto;
-  margin-top: 70px;
-  min-height: 80vh;
-}
-
 article {
   margin-bottom: 32px;
   height: 192px;

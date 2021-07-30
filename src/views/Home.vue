@@ -45,12 +45,6 @@ export default {
 </script>
 
 <style scoped>
-.content {
-  width: 1100px;
-  margin: auto;
-  margin-top: 70px;
-}
-
 /*---News section---*/
 .home-news {
   height: 509px;

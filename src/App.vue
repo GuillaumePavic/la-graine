@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <Header />
-    <router-view />
+    <main>
+      <router-view />
+    </main>
     <Footer />
   </div>
 </template>
@@ -22,5 +24,12 @@ export default {
 <style>
 #app {
   font-family: 'Baloo Chettan 2', cursive;
+}
+
+main {
+  width: 1100px;
+  min-height: 80vh;
+  margin: auto;
+  margin-top: 70px;
 }
 </style>

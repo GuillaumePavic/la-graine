@@ -10,9 +10,4 @@
 </template>
 
 <style scoped>
-.content {
-  width: 1100px;
-  margin: auto;
-  margin-top: 70px;
-}
 </style>
