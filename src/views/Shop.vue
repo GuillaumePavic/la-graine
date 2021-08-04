@@ -1,81 +1,46 @@
 <template>
   <div class="wrapper">
-    <article>
+    <article v-for="plant of plants" :key="plant.id">
       <img src="@/assets/ail.png" alt="ail icon" />
-      <h2>{{ name }}</h2>
-      <p>{{ conditioning }}</p>
-      <p>{{ price }}€</p>
-      <button>AJouter au panier</button>
-    </article>
-
-    <article>
-      <img src="@/assets/ail.png" alt="ail icon" />
-      <h2>{{ name }}</h2>
-      <p>{{ conditioning }}</p>
-      <p>{{ price }}€</p>
-      <button>AJouter au panier</button>
-    </article>
-    <article>
-      <img src="@/assets/ail.png" alt="ail icon" />
-      <h2>{{ name }}</h2>
-      <p>{{ conditioning }}</p>
-      <p>{{ price }}€</p>
-      <button>AJouter au panier</button>
-    </article>
-    <article>
-      <img src="@/assets/ail.png" alt="ail icon" />
-      <h2>{{ name }}</h2>
-      <p>{{ conditioning }}</p>
-      <p>{{ price }}€</p>
-      <button>AJouter au panier</button>
-    </article>
-
-    <article>
-      <img src="@/assets/ail.png" alt="ail icon" />
-      <h2>{{ name }}</h2>
-      <p>{{ conditioning }}</p>
-      <p>{{ price }}€</p>
-      <button>AJouter au panier</button>
-    </article>
-    <article>
-      <img src="@/assets/ail.png" alt="ail icon" />
-      <h2>{{ name }}</h2>
-      <p>{{ conditioning }}</p>
-      <p>{{ price }}€</p>
-      <button>AJouter au panier</button>
-    </article>
-    <article>
-      <img src="@/assets/ail.png" alt="ail icon" />
-      <h2>{{ name }}</h2>
-      <p>{{ conditioning }}</p>
-      <p>{{ price }}€</p>
-      <button>AJouter au panier</button>
+      <h2>{{ plant.name }}</h2>
+      <p>{{ plant.conditioning }}</p>
+      <p>{{ plant.price }}€</p>
+      <button @click="addItemToCart(plant)">Ajouter au panier</button>
     </article>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: "Shop",
   data: function () {
     return {
-      id: 1,
-      name: "ail",
-      scientific_name: "allium sativum",
-      sun: 2,
-      difficulty: 1,
-      water: 1,
-      icon: "ail.png",
-      image: "ail.png",
-      description:
-        "L'ail (pluriel : ails ou aulx), ail commun ou ail cultivé (Allium sativum) est une espèce de plante potagère vivace monocotylédone dont les bulbes, à l'odeur et au goût forts, sont souvent employés comme condiment en cuisine. La tête d'ail se compose de plusieurs caïeux ou « gousses » d'ail. La fleur d'ail est aussi consommée. On en distingue plusieurs types. Originaire d'Asie centrale, il aurait été utilisé depuis 5 000 ans en région méditerranéenne, en particulier en Égypte. Il est aujourd'hui toujours très apprécié dans de nombreuses régions pour ses qualités gustatives et médicinales.",
-      size: 0.15,
-      companion_pos: "{9, 49}",
-      companion_neg: "{43, 30, 13, 14, 15, 16, 17, 18}",
-      type_id: 4,
-      price: 20,
-      conditioning: "sac de 1kg",
+      plants: [
+        {
+          id: 1,
+          name: "ail",
+          scientific_name: "allium sativum",
+          sun: 2,
+          difficulty: 1,
+          water: 1,
+          icon: "ail.png",
+          image: "ail.png",
+          description:
+            "L'ail (pluriel : ails ou aulx), ail commun ou ail cultivé (Allium sativum) est une espèce de plante potagère vivace monocotylédone dont les bulbes, à l'odeur et au goût forts, sont souvent employés comme condiment en cuisine. La tête d'ail se compose de plusieurs caïeux ou « gousses » d'ail. La fleur d'ail est aussi consommée. On en distingue plusieurs types. Originaire d'Asie centrale, il aurait été utilisé depuis 5 000 ans en région méditerranéenne, en particulier en Égypte. Il est aujourd'hui toujours très apprécié dans de nombreuses régions pour ses qualités gustatives et médicinales.",
+          size: 0.15,
+          companion_pos: "{9, 49}",
+          companion_neg: "{43, 30, 13, 14, 15, 16, 17, 18}",
+          type_id: 4,
+          price: 20,
+          conditioning: "sac de 1kg",
+        },
+      ],
     };
+  },
+  methods: {
+    ...mapActions(["addItemToCart"]),
   },
 };
 </script>
