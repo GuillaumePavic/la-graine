@@ -1,7 +1,11 @@
 <template>
   <aside class="cart">
-    <div @click="onCartClick">Panier</div>
-    <p>{{ numberOfItems }}</p>
+    <div @click="onCartClick">
+      <p v-if="!numberOfItems">Votre panier est vide</p>
+      <p v-else>
+        Votre panier contient <strong>{{ numberOfItems }}</strong> articles
+      </p>
+    </div>
     <div class="items-wrapper" v-if="cartIsClicked">
       <button class="close-button" @click="onCloseButtonClick">
         <img
@@ -12,18 +16,21 @@
       </button>
       <!-- <p>Votre panier est vide</p> -->
       <article v-for="item of items" :key="item.id">
+        <p class="item-quantity">x {{ item.quantity }} -</p>
         <img src="@/assets/ail.png" alt="icon" />
         <p class="item-name">{{ item.name }}</p>
         <p class="item-price">{{ item.price }}€</p>
         <p>- {{ item.conditioning }}</p>
-        <button class="remove-item-button" @click="removeItemFromCart(item.id)">X</button>
+        <button class="remove-item-button" @click="removeItemFromCart(item.id)">
+          X
+        </button>
       </article>
     </div>
   </aside>
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "Cart",
@@ -36,9 +43,7 @@ export default {
     items() {
       return this.$store.state.cart;
     },
-    numberOfItems() {
-      return this.$store.state.cart.length;
-    },
+    ...mapGetters(["numberOfItems"]),
   },
   methods: {
     onCartClick() {
@@ -54,7 +59,6 @@ export default {
 
 <style scoped>
 .cart {
-  width: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -68,12 +72,16 @@ export default {
   margin: 0 4px;
 }
 
+.cart strong {
+  color: #65ad64;
+  font-weight: 900;
+}
+
 .items-wrapper {
   position: absolute;
   top: 0;
   right: 0;
   z-index: 100;
-  width: 20%;
   min-height: 200px;
 
   background-color: #ffffff;
@@ -122,6 +130,12 @@ article p {
 .item-name,
 .item-price {
   text-transform: uppercase;
+  font-weight: 900;
+}
+
+.item-quantity {
+  color: #000000;
+  font-size: 2rem;
   font-weight: 900;
 }
 

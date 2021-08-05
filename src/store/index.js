@@ -7,12 +7,41 @@ export default new Vuex.Store({
   state: {
     cart: [],
   },
+  getters: {
+    numberOfItems: (state) => {
+      let totalItems = 0;
+      for (let item of state.cart) {
+        totalItems += item.quantity;
+      }
+      return totalItems;
+    },
+  },
   mutations: {
     ADD_ITEM_TO_CART(state, item) {
-      state.cart.push(item);
+      let cartItem = state.cart.find((cartItem) => cartItem.id === item.id);
+
+      if (!cartItem) {
+        cartItem = {
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          conditioning: item.conditioning,
+          quantity: 0,
+        };
+
+        state.cart.push(cartItem);
+      }
+
+      cartItem.quantity++;
     },
     REMOVE_ITEM_FROM_CART(state, itemId) {
-      state.cart = state.cart.filter((item) => item.id !== itemId);
+      //state.cart = state.cart.filter((item) => item.id !== itemId);
+      let cartItem = state.cart.find((cartItem) => cartItem.id === itemId);
+      if (cartItem.quantity === 1) {
+        state.cart = state.cart.filter((cartItem) => cartItem.id !== itemId);
+      } else {
+        cartItem.quantity--;
+      }
     },
   },
   actions: {
