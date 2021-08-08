@@ -5,18 +5,33 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    plants: [],
     cart: [],
   },
   getters: {
     numberOfItems: (state) => {
       let totalItems = 0;
+
       for (let item of state.cart) {
         totalItems += item.quantity;
       }
+
       return totalItems;
+    },
+    totalPriceCart: (state) => {
+      let totalPriceCart = 0;
+
+      for (let item of state.cart) {
+        totalPriceCart += item.price * item.quantity;
+      }
+
+      return totalPriceCart;
     },
   },
   mutations: {
+    ADD_ALL_PLANTS(state, plants) {
+      state.plants = plants;
+    },
     ADD_ITEM_TO_CART(state, item) {
       let cartItem = state.cart.find((cartItem) => cartItem.id === item.id);
 
@@ -24,6 +39,7 @@ export default new Vuex.Store({
         cartItem = {
           id: item.id,
           name: item.name,
+          icon: item.icon,
           price: item.price,
           conditioning: item.conditioning,
           quantity: 0,
@@ -45,6 +61,9 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    addAllPlants(context, plants) {
+      context.commit("ADD_ALL_PLANTS", plants);
+    },
     addItemToCart(context, item) {
       context.commit("ADD_ITEM_TO_CART", item);
     },

@@ -7,6 +7,7 @@
       </p>
     </div>
     <div class="items-wrapper" v-if="cartIsClicked">
+      <p v-if="!numberOfItems" class="empty-cart">Votre panier est vide</p>
       <button class="close-button" @click="onCloseButtonClick">
         <img
           src="@/assets/close.png"
@@ -14,17 +15,17 @@
           class="close-button-icon"
         />
       </button>
-      <!-- <p>Votre panier est vide</p> -->
       <article v-for="item of items" :key="item.id">
-        <p class="item-quantity">x {{ item.quantity }} -</p>
-        <img src="@/assets/ail.png" alt="icon" />
+        <img :src="getIconUrl(item.icon)" alt="icon" />
         <p class="item-name">{{ item.name }}</p>
         <p class="item-price">{{ item.price }}€</p>
-        <p>- {{ item.conditioning }}</p>
+        <p class="item-conditioning">- {{ item.conditioning }}</p>
+        <p class="item-quantity">x {{ item.quantity }}</p>
         <button class="remove-item-button" @click="removeItemFromCart(item.id)">
-          X
+          <p>Supprimer</p>
         </button>
       </article>
+      <div class="total-price">Total panier : {{ totalPriceCart }}€</div>
     </div>
   </aside>
 </template>
@@ -43,7 +44,7 @@ export default {
     items() {
       return this.$store.state.cart;
     },
-    ...mapGetters(["numberOfItems"]),
+    ...mapGetters(["numberOfItems", "totalPriceCart"]),
   },
   methods: {
     onCartClick() {
@@ -51,6 +52,9 @@ export default {
     },
     onCloseButtonClick() {
       this.cartIsClicked = false;
+    },
+    getIconUrl(icon) {
+      return require("../assets/plant-icons/" + icon);
     },
     ...mapActions(["removeItemFromCart"]),
   },
@@ -68,10 +72,6 @@ export default {
   cursor: pointer;
 }
 
-.cart p {
-  margin: 0 4px;
-}
-
 .cart strong {
   color: #65ad64;
   font-weight: 900;
@@ -82,15 +82,24 @@ export default {
   top: 0;
   right: 0;
   z-index: 100;
-  min-height: 200px;
 
+  padding-top: 12px;
+  padding-bottom: 42px;
+  padding-right: 6px;
+  min-height: 200px;
+  min-width: 400px;
   background-color: #ffffff;
   border: 1px solid #000000;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+}
+
+.empty-cart {
+  width: 100%;
+  text-align: center;
 }
 
 .close-button {
@@ -115,7 +124,9 @@ article {
 }
 
 article img,
-article p {
+.item-name,
+.item-price,
+.item-conditioning {
   margin: 0 12px;
 }
 
@@ -123,24 +134,37 @@ article img {
   width: 32px;
 }
 
-article p {
+.item-name,
+.item-price,
+.item-conditioning {
   color: #65ad64;
 }
 
-.item-name,
-.item-price {
+.item-name {
   text-transform: uppercase;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .item-quantity {
   color: #000000;
-  font-size: 2rem;
-  font-weight: 900;
+  margin-left: 12px;
 }
 
 .remove-item-button {
+  background-color: #9ad499;
+  color: #ffffff;
   border: none;
-  background-color: inherit;
+  font-size: 0.8rem;
+  margin-left: 12px;
+  border-radius: 24px;
+  padding: 6px;
+}
+
+.total-price {
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 </style>
