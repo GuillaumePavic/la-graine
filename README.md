@@ -1,24 +1,8 @@
-# client
+# La Graine
 
-## Project setup
-```
-npm install
-```
+La Graine est un site de e-commerce fictif proposant à la vente des graines potagères. L'idée derrière ce petit projet était de m'initier et de m'entraîner à Vue.JS
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Ainsi la partie client est réalisée avec Vue.JS, Vuex et Vue router.
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![LG home](https://user-images.githubusercontent.com/76964122/128630277-14f616f8-16db-47b4-98c1-06dfb49ec8d5.png)
+![LG shop](https://user-images.githubusercontent.com/76964122/128630278-61fddf2b-f4d2-4656-bb28-37bbc25c8e6c.png)
