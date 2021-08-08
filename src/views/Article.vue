@@ -11,7 +11,7 @@ export default {
   name: "Article",
   data: function () {
     return {
-      title: "que semer en août",
+      title: "Lorem ipsum",
       date: "27/07/2021",
       message:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, magnam enim voluptate debitis ducimus, inventore molestias soluta doloribus deleniti harum quasi architecto dicta sit tempora dolor nemo quisquam? Velit, rem?",

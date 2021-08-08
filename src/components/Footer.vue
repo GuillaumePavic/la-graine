@@ -1,7 +1,7 @@
 <template>
   <footer>
-    <section>réseaux</section>
-    <section>mentions légales</section>
+    <section>Réseaux</section>
+    <section>Mentions légales</section>
     <section>Plan du site</section>
   </footer>
 </template>

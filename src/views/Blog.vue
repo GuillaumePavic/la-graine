@@ -4,7 +4,14 @@
       <h2>{{ article.title }}</h2>
       <p>Le {{ article.date }}</p>
       <p>{{ article.message }}</p>
-      <router-link :to="{ name: 'Article', params: {article: article.title.split(' ').join('-')} }" class="article-link">Lire la suite</router-link>
+      <router-link
+        :to="{
+          name: 'Article',
+          params: { article: article.title.split(' ').join('-') },
+        }"
+        class="article-link"
+        >Lire la suite</router-link
+      >
     </article>
   </div>
 </template>
